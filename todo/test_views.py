@@ -21,7 +21,7 @@ class testViews(TestCase):
         self.assertTemplateUsed(response, 'todo/edit_item.html')
 
     def test_can_add_item(self):
-        response = self.client.post('/add', {'name':'Test Added Item'})
+        response = self.client.post('/add', {'name': 'Test Added Item'})
         self.assertRedirects(response, '/')
 
     def test_can_delete_item(self):
@@ -38,7 +38,9 @@ class testViews(TestCase):
         updatedItem = Item.objects.get(id=item.id)
         self.assertFalse(updatedItem.done)
 
-
-
-
-
+    def test_can_edit_item(self):
+        item = Item.objects.create(name="Test Todo Item")
+        response = self.client.post(f'/edit/{item.id}', {'name': 'Updated Item Name'})
+        self.assertRedirects(response, '/')
+        updated_item = Item.objects.get(id=item.id)
+        self.assertEqual(updated_item.name, 'Updated Item Name')
