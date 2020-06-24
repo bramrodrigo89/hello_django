@@ -26,7 +26,7 @@ SECRET_KEY = 'ql1nb0m&tjcg1(job0c#_8e9gt=h48!wm1fnb4b31fn8dbto%p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['new-todo-list-app.herokuapp.com']
 
 
 # Application definition
